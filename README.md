@@ -69,3 +69,74 @@ window_size = 3
 
 result = moving_average(data_stream, window_size)
 ```
+
+## Lambdas
+
+I subscribe to following Frank Lundh's approach to lambdas:
+1. Write a lambda function.
+2. Write a comment explaining what the heck that lambda does.
+3. Study the comment for a while, and think of a name that captures the essence of the comment.
+4. Convert the lambda to a def statement, using that name.
+5. Remove the comment.
+
+## Callables
+
+Any object can be made to behave like a function. All that is required is to implement the __call__ instance method.
+
+For example, we might make a random_data class:
+
+```python
+class RandomDataGenerator:
+    def __init__(self, data):
+        self.data = data
+
+    def __call__(self):
+        return random.choice(self.data)
+
+# Example usage
+data_generator = RandomDataGenerator([1, 2, 3, 4, 5])
+random_data_point = data_generator()
+```
+
+## ItemGetter
+
+The standard package `operator` includes a handy function called `itemgetter` which can be used to pick out items from lists/tuples.
+
+As an example, consider sorting the list of tuples by the country code at index 1.
+```python
+metro_data = [('Tokyo', 'JP', 36.933, (35.689722, 139.691667)),
+              ('Delhi NCR', 'IN', 21.935, (28.613889, 77.208889)),
+              ('Mexico City', 'MX', 20.142, (19.433333, -99.133333)),
+              ('New York-Newark', 'US', 20.104, (40.808611, -74.020386)),
+              ('Sao Paulo', 'BR', 19.649, (-23.547778, -46.635833)),
+             ]
+
+from operator import itemgetter
+sorted_cities = sorted(metro_data, key=itemgetter(1))
+```
+
+Similarly `attrgetter` can be used with namedtuples to get named items from the object.
+
+## Functools.partial
+
+Functools has a useful function called `partial` which can freeze some of the inputs of a function.
+
+As an example:
+
+```python
+from functools import partial
+
+# Original function
+def exponential_growth(base, exponent, time):
+    return base * (1 + exponent) ** time
+
+
+# Create a partial function with fixed base and exponent
+fixed_base_exp_growth = partial(exponential_growth, base=2, exponent=0.1)
+
+# Use the partial function in a data processing pipeline
+time_values = [0, 1, 2, 3, 4, 5]
+result = [fixed_base_exp_growth(t) for t in time_values]
+```
+
+This is useful when we expect to use a function in a very particular way in our code.
