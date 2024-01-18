@@ -140,3 +140,68 @@ result = [fixed_base_exp_growth(t) for t in time_values]
 ```
 
 This is useful when we expect to use a function in a very particular way in our code.
+
+## Decorators
+
+Decorators are a super useful syntax for enhancing functions. There's two things to remember:
+1. They have the power to replace the decorated function with a new one.
+2. They are executed immediately when a module is loaded.
+
+As an example, the following code snippets are completely equivalent:
+```python
+@decorate
+def target():
+    print('running target()')
+```
+
+```python
+def target():
+    print('running target()')
+
+target = decorate(target)
+```
+
+### Decorators as registers
+One neat use case is to use a decorator to register a function:
+```python
+
+promos = []
+
+def promotion(promo_func):
+    promos.append(promo_func)
+    return promo_func
+
+@promotion
+def bulk_item(order):
+    """10% discount for each LineItem with 20 or more units"""
+    discount = 0
+    for item in order.cart:
+        if item.quantity >= 20:
+            discount += item.total() * .1
+    return discount
+```
+
+### functools.singledispatch
+
+`singledispatch` allows you to write a single function with multiple implmentations. For example, let's say we want to have a function which will square it's input. Typically if we want to handle different data types (list, int etc.) then we need to have a long list of if-else statements. `singledispatch` allows us to write custom functions based on the type.
+
+```python
+from functools import singledispatch
+
+@singledispatch
+def square_elements(data):
+    raise NotImplementedError("Unsupported data type")
+
+@square_elements.register(list)
+def _(data):
+    return [item ** 2 for item in data]
+
+@square_elements.register(dict)
+def _(data):
+    return {key: value ** 2 for key, value in data.items()}
+
+@square_elements.register(int)
+@square_elements.register(float)
+def _(data):
+    return data ** 2
+```
