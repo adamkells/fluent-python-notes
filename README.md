@@ -205,3 +205,41 @@ def _(data):
 def _(data):
     return data ** 2
 ```
+
+### Parameterizing decorators
+
+We can add parameters to decorators by wrapping them in an additional layer.
+
+```python
+registry = set()
+def register(active=True):
+    def decorate(func):
+        print('running register(active=%s)->decorate(%s)'
+        % (active, func))
+        if active:
+            registry.add(func)
+        else:
+            registry.discard(func)
+        return func
+    return decorate
+
+@register(active=False)
+def f1():
+    print('running f1()')
+```
+
+### Decorators as classes
+
+We can also write decorators as classes rather than function wrappers by creating `__init__` and `__call__` methods.
+
+```python
+class function_wrapper(object):
+    def __init__(self, wrapped):
+        self.wrapped = wrapped
+    def __call__(self, *args, **kwargs):
+        return self.wrapped(*args, **kwargs)
+
+@function_wrapper
+def function():
+    pass
+```
