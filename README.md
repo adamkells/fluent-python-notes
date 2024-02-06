@@ -243,3 +243,20 @@ class function_wrapper(object):
 def function():
     pass
 ```
+
+## Making my Classes immutable
+
+Sometimes when I make a class object with properties, I don't want to be able to accidentally update any of the values.
+
+I can do this by using double underscores to make attributes private and instead access via class methods.
+
+```python
+class MyClass:
+    def __init__(self, x):
+        self.__x = x
+    @property
+    def x(self):
+        return self.__x
+```
+
+So now I can't make changes directly to the x attribute since `x` is actually a function which just returns the value of the private property.
