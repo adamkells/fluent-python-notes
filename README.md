@@ -1,5 +1,5 @@
-# cool-python-stuff-i-forget-sometimes
-A collection of neat python tips/tricks that I forget about.
+# fluent-python-notes
+A collection of neat python functionality that I learned from the book Fluent Python.
 
 ## Table of Contents
 - [Generator Expressions](#generator-expressions)
