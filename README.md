@@ -1,6 +1,15 @@
 # cool-python-stuff-i-forget-sometimes
 A collection of neat python tips/tricks that I forget about.
 
+## Table of Contents
+[Generator Expressions](#generator-expressions)
+[Named Tuples](#named-tuples)
+[Sorting lists/Bisect](#sorting-listsbisect)
+[Deques](#deques)
+[Lambdas](#lambdas)
+[Callables](#callables)
+[Itemgetter](#itemgetter)
+[Functools.partial](#functoolspartial)
 
 ## Generator Expressions
 
