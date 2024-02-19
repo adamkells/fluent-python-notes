@@ -10,6 +10,12 @@ A collection of neat python tips/tricks that I forget about.
 [Callables](#callables)
 [Itemgetter](#itemgetter)
 [Functools.partial](#functoolspartial)
+[Decorators](#decorators)
+[Decorators as Registers](#decorators-as-registers)
+[Functools.singledispatch](#functoolssingledispatch)
+[Parameterizing Decorators](#parameterizing-decorators)
+[Decorators as Classes](#decorators-as-classes)
+[Making my classes immutable](#making-my-classes-immutable)
 
 ## Generator Expressions
 
