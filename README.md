@@ -2,20 +2,20 @@
 A collection of neat python tips/tricks that I forget about.
 
 ## Table of Contents
-[Generator Expressions](#generator-expressions)
-[Named Tuples](#named-tuples)
-[Sorting lists/Bisect](#sorting-listsbisect)
-[Deques](#deques)
-[Lambdas](#lambdas)
-[Callables](#callables)
-[Itemgetter](#itemgetter)
-[Functools.partial](#functoolspartial)
-[Decorators](#decorators)
-[Decorators as Registers](#decorators-as-registers)
-[Functools.singledispatch](#functoolssingledispatch)
-[Parameterizing Decorators](#parameterizing-decorators)
-[Decorators as Classes](#decorators-as-classes)
-[Making my classes immutable](#making-my-classes-immutable)
+- [Generator Expressions](#generator-expressions)
+- [Named Tuples](#named-tuples)
+- [Sorting lists/Bisect](#sorting-listsbisect)
+- [Deques](#deques)
+- [Lambdas](#lambdas)
+- [Callables](#callables)
+- [Itemgetter](#itemgetter)
+- [Functools.partial](#functoolspartial)
+- [Decorators](#decorators)
+- [Decorators as Registers](#decorators-as-registers)
+- [Functools.singledispatch](#functoolssingledispatch)
+- [Parameterizing Decorators](#parameterizing-decorators)
+- [Decorators as Classes](#decorators-as-classes)
+- [Making my classes immutable](#making-my-classes-immutable)
 
 ## Generator Expressions
 
